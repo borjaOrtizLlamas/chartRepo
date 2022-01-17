@@ -11,7 +11,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: manual-automate-image
-  namespace: flux-system
+  namespace: {{ .Values.namespace }}
 spec:
   selector:
     matchLabels:
@@ -34,7 +34,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: my-service
-  namespace: flux-system
+  namespace: {{ .Values.namespace }}
 spec:
   selector:
     app: manual-automate-image
