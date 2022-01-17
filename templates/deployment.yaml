@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: "Hello World"
+  drink: {{ .Values.favorite.drink }}
+  food: {{ .Values.favorite.food }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: manual-automate-image
+  namespace: flux-system
+spec:
+  selector:
+    matchLabels:
+      app: manual-automate-image
+  template:
+    metadata:
+      labels:
+        app: manual-automate-image
+    spec:
+      containers:
+        - name: manual-automate-image
+          image: nginx:{{ .Values.nginx.version }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort:  {{ .Values.nginx.port }}
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: flux-system
+spec:
+  selector:
+    app: manual-automate-image
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: {{ .Values.nginx.port }}
+  type: LoadBalancer
