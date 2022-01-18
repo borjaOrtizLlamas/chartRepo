@@ -85,3 +85,4 @@ nginx:
 favorite:
   drink: cocacolita
   food: carnecita
+namespace: default
