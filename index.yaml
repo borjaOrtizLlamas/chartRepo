@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  borja-nginx:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-01-18T08:50:17.858653+01:00"
+    description: A Helm chart for Kubernetes
+    digest: a4589f83c668e38eac6969070074c34e387e477c6c757432c169a992b0365385
+    name: borja-nginx
+    type: application
+    urls:
+    - borja-nginx-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-01-18T08:50:17.854743+01:00"
