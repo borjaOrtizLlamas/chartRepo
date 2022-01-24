@@ -43,4 +43,4 @@ spec:
       protocol: TCP
       port: 80
       targetPort: {{ .Values.nginx.port }}
-  type: LoadBalancer
+  type: ClusterIP
